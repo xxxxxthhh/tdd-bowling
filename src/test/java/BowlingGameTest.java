@@ -44,4 +44,23 @@ public class BowlingGameTest {
         assertEquals(15, bowlingGame.getRoundScore()[0]);
         assertEquals(5, bowlingGame.getRoundScore()[1]);
     }
+
+    @Test
+    public void if_first_bonus_throw_beatALL_have_other_one_throw(){
+      bowlingGame.throwBall(0,0,5);
+      bowlingGame.throwBall(0,1,10);
+      bowlingGame.throwBall(1,0,5);
+      bowlingGame.calculateRoundScore();
+      assertEquals(20,bowlingGame.getRoundScore()[0]);
+      assertEquals(5, bowlingGame.getRoundScore()[1]);
+    }
+
+    @Test
+    public void tenth_strike_need_two_more_throw_to_get_score(){
+      bowlingGame.throwBall(9,0, 10);
+      bowlingGame.throwBall(10,0,9);
+      bowlingGame.throwBall(10,1,9);
+      bowlingGame.calculateRoundScore();
+      assertEquals(28,bowlingGame.getRoundScore()[9]);
+    }
 }
