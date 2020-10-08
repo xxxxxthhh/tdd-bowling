@@ -63,4 +63,20 @@ public class BowlingGameTest {
       bowlingGame.calculateRoundScore();
       assertEquals(28,bowlingGame.getRoundScore()[9]);
     }
+    @Test
+    public void tenth_strike_first_bonus_beatAll() {
+      bowlingGame.throwBall(9,0,5);
+      bowlingGame.throwBall(9,1,10);
+      bowlingGame.throwBall(10,0,10);
+      bowlingGame.calculateRoundScore();
+      assertEquals(25,bowlingGame.getRoundScore()[9]);
+    }
+
+    @Test
+    public void tenth_strike_two_throws_and_no_beatALL() {
+        bowlingGame.throwBall(9,0,5);
+        bowlingGame.throwBall(9,1,6);
+        bowlingGame.calculateRoundScore();
+        assertEquals(11,bowlingGame.getRoundScore()[9]);
+    }
 }
